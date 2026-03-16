@@ -2,7 +2,7 @@ let isOn = true;
 
 const display = document.getElementById("display");
 
-// ligar / desligar
+// on / off
 function togglePower() {
     isOn = !isOn;
 
@@ -13,7 +13,7 @@ function togglePower() {
         display.placeholder = "";
     }
 }
-// adicionar ao display
+// add display
 function appendToDisplay(input) {
     if (!isOn) return;
 
@@ -21,12 +21,12 @@ function appendToDisplay(input) {
 
     let lastChar = display.value.slice(-1);
 
-    // não deixar começar com operador
+    // do not let it start with operator
     if (display.value === "" && operators.includes(input)) {
         return;
     }
 
-    // se clicar dois operadores seguidos → substitui
+    // replace operators
     if (operators.includes(lastChar) && operators.includes(input)) {
         display.value = display.value.slice(0, -1) + input;
         return;
@@ -35,13 +35,13 @@ function appendToDisplay(input) {
     display.value += input;
 }
 
-// limpar display
+// clear display
 function clearDisplay() {
     if (!isOn) return;
     display.value = "";
 }
 
-// calcular resultado
+// calculate result
 function calculate() {
     if (!isOn) return;
 
@@ -54,14 +54,14 @@ function calculate() {
     }
 }
 
-// positivo / negativo
+// positive / negative
 function toggleSign() {
     if (display.value !== "") {
         display.value = Number(display.value) * -1;
     }
 }
 
-// porcentagem
+// percentage
 function percent() {
     if (display.value !== "") {
         display.value = Number(display.value) / 100;
